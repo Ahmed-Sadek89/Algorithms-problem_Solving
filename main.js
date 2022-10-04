@@ -1,68 +1,40 @@
-//////              HERE THERE ARE MANY SOLUTIONS, BUT WE WANT THE (OPTIMAL ONE)
+// power of two 
+// give n, if n === x^(any value) => that mean that the number is power of two;
+// ex => 8 = 2^(3)
+// ex => 9 !=2^(any value)
 
-// determine if the number is prime or not
 
-// function prime1(n) {
-//     let isPrime = '';
-//     if(n > 1) {
-//         let res = 1
-//         prime :
-//         for(let i = 1; i < n; i++ ) {
-//             for(let j = 1; j < n; j++ ) {
-//                 console.log(`${i} * ${j} = ${n}`)
-//                 res = i * j
-//                 if(res === n) {
-//                     console.log(res)
-//                     isPrime = 'this is not prime'
-//                     break prime
-//                 } else {
-//                     isPrime = 'this is prime'
-//                 }
-//             }  
+// function isPowerOfTwo(n) {
+//     let res = 1;
+//     for ( let i = 0; i < n; i++ ) {
+//         res = Math.pow(2, i);
+//         console.log(res)
+//         if ( res < n ) {
+//             continue;
+//         } else if (res === n) {
+//             return 'this element is power of two';
+//         } else {
+//             return 'this element is not power of two'
 //         }
-//     } else {
-//         isPrime = 'element less than or eql 1 is not prime'
 //     }
-//     return isPrime
+//     return 'this element is not power of two'
 // }
 
-// console.log(prime1(2)) // big O = O(n^2)
-
-//// THIS ANOVE IS NOT OPTIMAL SOLUTION
+// console.log(isPowerOfTwo(8)) // O(n)
 
 
-// function prime2(n) {
-//     if (n > 2) {
-//         for(let i = 2; i < n; i++ ) {
-//             console.log(i)
-//             if ( n%i === 0 ) {
-//                 return 'is not prime'
-//             }
-//         } 
-//     } else {
-//         return 'is prime'
-//     }
-//     return 'is prime'
-// }
-
-// console.log(prime2(4)) // O(n)
-
-// //// ALSO, THIS ABOVE IS NOT OPTIMAL SOLUTION
-
-function prime2(n) {
-    if (n > 2) {
-        for(let i = 2; i < Math.sqrt(n); i++ ) {
-            console.log(i)
-            if ( n%i === 0 ) {
-                return 'is not prime'
-            }
-        } 
+function isPowerOfTwo(n) {
+    if ( n < 1 ) {
+        return false;
     } else {
-        return 'is prime'
+        while (n > 1) {
+            if (n%2 !== 0 ) {
+                return false
+            }
+            n = n/2
+        }
     }
-    return 'is prime'
+    return true
 }
 
-console.log(prime2(4)) // O(sqrt(n))
-
-///// HERE, THIS ABOVE IS OPTIMAL SOLUTION
+console.log(isPowerOfTwo(8))// O(log(n))
