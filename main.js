@@ -1,9 +1,12 @@
-function fact(n) {
-    if( n < 1) {
-        return 1;
-    } else {
-        return n * fact(n-1)
+function linear_search(key, array) {
+    for( let i = 0; i < array.length; i++ ) {
+        if ( array[i] === key ) {
+            return `found in index: ${i}`;
+        }else {
+            continue;
+        }
     }
+    return 'your key is not found';
 }
 
-console.log(fact(4)) // big_O = O(n) 
+console.log(linear_search(3, [1,2,3,4]))
