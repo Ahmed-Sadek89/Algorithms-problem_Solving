@@ -1,12 +1,18 @@
-function linear_search(key, array) {
-    for( let i = 0; i < array.length; i++ ) {
-        if ( array[i] === key ) {
-            return `found in index: ${i}`;
-        }else {
-            continue;
+function binary_search(key, array) {
+    let leftIndex = 0;
+    let rightIndex = array.length - 1;
+    while( leftIndex <= rightIndex ) {
+        let middle = Math.floor((leftIndex + rightIndex) / 2);
+        if( key === array[middle] ){
+            return middle
+        } else if ( key <= array[middle] ) {
+            rightIndex = middle - 1
+        } else {
+            leftIndex = middle + 1
         }
     }
-    return 'your key is not found';
+    return -1
 }
 
-console.log(linear_search(3, [1,2,3,4]))
+console.log(binary_search(2, [1,2,3,4])) // if search from one side of array => O(log(n))
+// else => O(n)
