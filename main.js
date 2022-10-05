@@ -1,8 +1,9 @@
-function fib(n) {
-    if(n < 2) return n;
-    else {
-        return fib(n-1) + fib(n-2)
+function fact(n) {
+    if( n < 1) {
+        return 1;
+    } else {
+        return n * fact(n-1)
     }
 }
 
-console.log(fib(7)) // O(n^2)
+console.log(fact(4)) // big_O = O(n) 
