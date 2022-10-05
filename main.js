@@ -14,5 +14,4 @@ function binary_search(key, array) {
     return -1
 }
 
-console.log(binary_search(2, [1,2,3,4])) // if search from one side of array => O(log(n))
-// else => O(n)
+console.log(binary_search(2, [1,2,3,4])) //  search from one side of array => O(log(n))
