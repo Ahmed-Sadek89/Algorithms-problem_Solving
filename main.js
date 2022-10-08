@@ -1,19 +1,18 @@
-function insertion_sort(array) {
-    let key;
-    for( let i = 1; i < array.length; i++ ) {
-        key = array[i]
-        j = i - 1;
-        while( j > -1 && array[j] > key ) { // case if array[j] > key
-            array[j + 1] = array[j];
-            j--
-        }
-        array[j + 1] = key // case if array[j] !> key
+function quick_sort(array) {
+    if( array.length < 2 ) {
+        return array
     }
-
-    return array;
+    let pivot = array[array.length-1];
+    let left = [];
+    let right = []
+    for( let i = 0; i < array.length -1 ; i++ ){
+        if(array[i] < pivot ) {
+            left.push(array[i])
+        } else {
+            right.push(array[i])
+        }
+    }
+    return [...quick_sort(left), pivot, ...quick_sort(right)]
 }
-
-console.log(insertion_sort([-6, 20, 8, -2, 4]))
-
-// best case O(n)
-// worst case O(n^2) => array is sorted desc
+let arr = [2,1,7,8,3,5,6,4,6]
+console.log(quick_sort(arr))
