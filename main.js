@@ -1,18 +1,24 @@
-function quick_sort(array) {
-    if( array.length < 2 ) {
+function merge_sort(array) {
+    if (array.length < 2) { 
         return array
     }
-    let pivot = array[array.length-1];
-    let left = [];
-    let right = []
-    for( let i = 0; i < array.length -1 ; i++ ){
-        if(array[i] < pivot ) {
-            left.push(array[i])
+    let middle = Math.floor(array.length / 2);
+    let leftArray = array.slice(0, middle); // logn
+    let rightArray = array.slice(middle); // logn
+    return merging(merge_sort(leftArray), merge_sort(rightArray));
+}
+
+function merging(leftArray, rightArray) {
+    const sorted = [] ;
+    while(leftArray.length && rightArray.length) {
+        if(leftArray[0] <= rightArray[0]){
+            sorted.push(leftArray.shift())
         } else {
-            right.push(array[i])
+            sorted.push(rightArray.shift())
         }
     }
-    return [...quick_sort(left), pivot, ...quick_sort(right)]
+    return [...sorted, ...leftArray, ...rightArray]
 }
-let arr = [2,1,7,8,3,5,6,4,6]
-console.log(quick_sort(arr))
+
+let arr = [5,3,7,4,1,2,6]
+console.log(merge_sort(arr)) // O(nlog(n))
